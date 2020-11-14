@@ -21,7 +21,7 @@ namespace AlumniiUT
 
         }
 
-        SqlConnection con = new SqlConnection("Data Source=ERMIRA\\ERMIRA;Initial Catalog=AlumniUT;Integrated Security=True");
+        SqlConnection con = new SqlConnection("");
         
         protected void SendEmail(object sender, EventArgs e)
         {
@@ -35,8 +35,8 @@ namespace AlumniiUT
                 string username = dr["username"].ToString();
                 string password = dr["password"].ToString();
                 string name = dr["name"].ToString();
-                MailMessage mm = new MailMessage("ermira62@gmail.com", TextBox1.Text);
-                mm.Subject = "Your AlumniUT Info";
+                MailMessage mm = new MailMessage("ENTER YOUR GMAIL HERE", TextBox1.Text);
+                mm.Subject = "Your SUBJECT";
                 mm.Body = string.Format("Hello {2} : Your username is: <h1> {0} </h1>  <br/> Your password is: <h1> {1} </h1>", username, password, name);
                 mm.IsBodyHtml = true;
                 SmtpClient smtp = new SmtpClient();
@@ -50,20 +50,13 @@ namespace AlumniiUT
                 smtp.Credentials = nc;
                 smtp.Port = 587;
                 smtp.Send(mm);
-                Label1.Text = "Your AlumniUT username and password has been sent to your email!";
+                Label1.Text = "Your username and password have been sent to your email!";
             }
             else
             {
                 Label1.Text = "This email does not exist in our system!";
             }
             con.Close();
-
-
-
-
-
-
-
         }
     }
     }
